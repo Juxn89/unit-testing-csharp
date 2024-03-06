@@ -89,5 +89,21 @@
 
             Assert.ThrowsAny<ArgumentNullException>( () => strOperation.GetStringLength(null));
         }
+
+        [Theory]
+        [InlineData("I", 1)]
+        [InlineData("V", 5)]
+        [InlineData("X", 10)]
+        [InlineData("L", 50)]
+        [InlineData("C", 100)]
+        [InlineData("M", 1000)]
+        public void FromRomanToNumber(string romanNumber, int expected)
+        {
+            var strOperation = new StringOperations();
+
+            var result = strOperation.FromRomanToNumber(romanNumber);
+
+            Assert.Equal(expected, result);
+        }
     }
 }
