@@ -17,3 +17,6 @@ Las ```pruebas unitarias``` son una práctica dentro del desarrollo de software e
 ## Nuget Packages
 - Instalar coverlet.console: ```dotnet tool install --global coverlet.console --version 6.0.0```
 - Ejecutar comando para las coberturas de las pruebas: ```dotnet test /p:CollectCoverage=true```
+	- Incluir solo los **namespace** que queremos ejecutar con **Coverlet**: ```/p:Include="[*]NameSpace.*"```.
+	- Se puede agrega el atributo ```[ExcludeFromCodeCoverage]``` en la _clase_ o _método_ que deseas excluir.
+	- Excluir todas las clases o métodos que tengan el atributo _ExcludeFromCodeCoverage_: ```/p:ExcludeByAttribute="ExcludeFromCodeCoverage```
