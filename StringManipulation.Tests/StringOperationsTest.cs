@@ -1,4 +1,7 @@
-﻿namespace StringManipulation.Tests
+﻿using Microsoft.Extensions.Logging;
+using Moq;
+
+namespace StringManipulation.Tests
 {
     public class StringOperationsTest
     {
@@ -104,6 +107,17 @@
             var result = strOperation.FromRomanToNumber(romanNumber);
 
             Assert.Equal(expected, result);
+        }
+
+        [Fact]
+        public void CountOccurences()
+        {
+            var mokLogger = new Mock<ILogger<StringOperations>>();
+            var strOperations = new StringOperations(mokLogger.Object);
+
+            var result = strOperations.CountOccurrences("Hello world", 'l');
+
+            Assert.Equal(3, result);
         }
     }
 }
